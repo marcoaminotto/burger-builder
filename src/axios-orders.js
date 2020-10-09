@@ -1,8 +1,7 @@
 import axios from 'axios';
-require("dotenv").config();
 
 const instance = axios.create({
-  baseURL: process.env.DB_ADDRESS
+  baseURL: `${process.env.REACT_APP_DATABASE}`,
 });
 
 export default instance;
