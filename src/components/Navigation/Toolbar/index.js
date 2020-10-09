@@ -7,7 +7,7 @@ import Logo from '../../Logo';
 import classes from './Styles.module.css';
 
 const toolbar = (props) => (
-  <head className={classes.Toolbar}>
+  <div className={classes.Toolbar}>
     <DrawerToggle clicked={props.drawerToggleClicked} />
     <div className={classes.Logo}>
       <Logo />
@@ -15,7 +15,7 @@ const toolbar = (props) => (
     <nav className={classes.DesktopOnly}>
       <NavigationItems />
     </nav>
-  </head>
+  </div>
 );
 
 export default toolbar;
