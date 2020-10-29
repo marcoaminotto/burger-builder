@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Input from '../../components/UI/Input';
 import Button from '../../components/UI/Button';
 
 import classes from './Styles.module.css';
+import * as actions from '../../store/actions/index';
 
 class Auth extends Component {
   state = {
@@ -45,14 +47,17 @@ class Auth extends Component {
       [controlName]: {
         ...this.state.controls[controlName],
         value: event.target.value,
-        valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+        valid: this.checkValidity(
+          event.target.value,
+          this.state.controls[controlName].validation
+        ),
         touched: true,
-      }
+      },
     };
     this.setState({
       controls: updatedControls,
     });
-  }
+  };
 
   checkValidity(value, rules) {
     let isValid = true;
@@ -80,6 +85,11 @@ class Auth extends Component {
     return isValid;
   }
 
+  submitHandler = (event) => {
+    event.preventDefault();
+    this.props.onAuth(this.state.controls.email, this.state.controls.password);
+  }
+
   render() {
     const formElementsArray = [];
     for (let key in this.state.controls) {
@@ -102,8 +112,8 @@ class Auth extends Component {
       />
     ));
     return (
-      <div className={classes.Auth }>
-        <form>
+      <div className={classes.Auth}>
+        <form onSubmit={this.submitHandler}>
           {form}
           <Button btnType="Success">Submit</Button>
         </form>
@@ -112,4 +122,10 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password) => dispatch(actions.auth(email, password)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Auth);
