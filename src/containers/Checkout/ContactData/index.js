@@ -6,9 +6,11 @@ import Spinner from '../../../components/UI/Spinner';
 import Input from '../../../components/UI/Input';
 import axios from '../../../axios-orders';
 import withErrorHandler from '../../../hoc/WithErrorHandler';
+import { updateObject } from '../../../shared/utility';
 import * as actions from '../../../store/actions/index';
 
 import classes from './Styles.module.css';
+import { valid } from 'semver';
 
 class ContactData extends Component {
   state = {
@@ -149,19 +151,17 @@ class ContactData extends Component {
   }
 
   inputChangedHandler = (event, inputIdentifier) => {
-    const updatedOrderForm = {
-      ...this.state.orderForm,
-    };
-    const updatedFormElement = {
-      ...updatedOrderForm[inputIdentifier],
-    };
-    updatedFormElement.value = event.target.value;
-    updatedFormElement.valid = this.checkValidity(
-      updatedFormElement.value,
-      updatedFormElement.validation
-    );
-    updatedFormElement.touched = true;
-    updatedOrderForm[inputIdentifier] = updatedFormElement;
+    const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier], {
+      value: event.target.value,
+      valid: this.checkValidity(
+        event.target.value,
+        this.state.orderForm[inputIdentifier].validation
+      ),
+      touched: true,
+    });
+    const updatedOrderForm = updateObject(this.state.orderForm, {
+      [inputIdentifier]: updatedFormElement,
+    });
 
     let formIsValid = true;
     for (let inputIdentifier in updatedOrderForm) {

@@ -6,6 +6,7 @@ import Input from '../../components/UI/Input';
 import Button from '../../components/UI/Button';
 import Spinner from '../../components/UI/Spinner';
 
+import { updateObject } from '../../shared/utility';
 import classes from './Styles.module.css';
 import * as actions from '../../store/actions/index';
 
@@ -51,18 +52,16 @@ class Auth extends Component {
   }
 
   inputChangedHandler = (event, controlName) => {
-    const updatedControls = {
-      ...this.state.controls,
-      [controlName]: {
-        ...this.state.controls[controlName],
+    const updatedControls = updateObject(this.state.controls, {
+      [controlName]: updateObject(this.state.controls[controlName], {
         value: event.target.value,
         valid: this.checkValidity(
           event.target.value,
           this.state.controls[controlName].validation
         ),
         touched: true,
-      },
-    };
+      }),
+    });
     this.setState({
       controls: updatedControls,
     });
@@ -143,9 +142,9 @@ class Auth extends Component {
       errorMessage = <p>{this.props.error.message}</p>;
     }
 
-    let authRedirect = null; 
-    if (this.props.isAuthenticated ) {
-      authRedirect = <Redirect to={this.props.authRedirectPath}/>
+    let authRedirect = null;
+    if (this.props.isAuthenticated) {
+      authRedirect = <Redirect to={this.props.authRedirectPath} />;
     }
 
     return (
