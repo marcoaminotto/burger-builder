@@ -6,11 +6,10 @@ import Spinner from '../../../components/UI/Spinner';
 import Input from '../../../components/UI/Input';
 import axios from '../../../axios-orders';
 import withErrorHandler from '../../../hoc/WithErrorHandler';
-import { updateObject } from '../../../shared/utility';
+import { updateObject, checkValidity } from '../../../shared/utility';
 import * as actions from '../../../store/actions/index';
 
 import classes from './Styles.module.css';
-import { valid } from 'semver';
 
 class ContactData extends Component {
   state = {
@@ -119,46 +118,18 @@ class ContactData extends Component {
     this.props.onOrderBurger(order, this.props.token);
   };
 
-  checkValidity(value, rules) {
-    let isValid = true;
-    if (!rules) {
-      return true;
-    }
-
-    if (rules.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
-    }
-
-    if (rules.isEmail) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test(value) && isValid;
-    }
-
-    if (rules.isNumeric) {
-      const pattern = /^\d+$/;
-      isValid = pattern.test(value) && isValid;
-    }
-
-    return isValid;
-  }
-
   inputChangedHandler = (event, inputIdentifier) => {
-    const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier], {
-      value: event.target.value,
-      valid: this.checkValidity(
-        event.target.value,
-        this.state.orderForm[inputIdentifier].validation
-      ),
-      touched: true,
-    });
+    const updatedFormElement = updateObject(
+      this.state.orderForm[inputIdentifier],
+      {
+        value: event.target.value,
+        valid: checkValidity(
+          event.target.value,
+          this.state.orderForm[inputIdentifier].validation
+        ),
+        touched: true,
+      }
+    );
     const updatedOrderForm = updateObject(this.state.orderForm, {
       [inputIdentifier]: updatedFormElement,
     });

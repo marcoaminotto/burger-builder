@@ -6,7 +6,7 @@ import Input from '../../components/UI/Input';
 import Button from '../../components/UI/Button';
 import Spinner from '../../components/UI/Spinner';
 
-import { updateObject } from '../../shared/utility';
+import { updateObject, checkValidity } from '../../shared/utility';
 import classes from './Styles.module.css';
 import * as actions from '../../store/actions/index';
 
@@ -55,7 +55,7 @@ class Auth extends Component {
     const updatedControls = updateObject(this.state.controls, {
       [controlName]: updateObject(this.state.controls[controlName], {
         value: event.target.value,
-        valid: this.checkValidity(
+        valid: checkValidity(
           event.target.value,
           this.state.controls[controlName].validation
         ),
@@ -66,32 +66,6 @@ class Auth extends Component {
       controls: updatedControls,
     });
   };
-
-  checkValidity(value, rules) {
-    let isValid = true;
-    if (!rules) {
-      return true;
-    }
-
-    if (rules.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-
-    if (rules.maxLength) {
-      isValid = value.length <= rules.minLength && isValid;
-    }
-
-    if (rules.isEmail) {
-      const pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-      isValid = pattern.test(value) && isValid;
-    }
-
-    return isValid;
-  }
 
   submitHandler = (event) => {
     event.preventDefault();
