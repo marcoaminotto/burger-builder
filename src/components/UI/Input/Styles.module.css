@@ -13,8 +13,8 @@
 .InputElement {
   width: 100%;
   outline: none;
-  border: 1px solid #ccc;
-  background-color: white;
+  border: 1px solid var(--color-input-border);
+  background-color: var(--color-input-background);
   font: inherit;
   padding: 6px 10px;
   display: block;
@@ -23,10 +23,14 @@
 
 .InputElement:focus {
   outline: none;
-  background-color: #ccc;
+  background-color: var(--color-input-border);
 }
 
 .Invalid {
-  border: 1px solid red;
-  background-color: #fd6a73;
+  border: 1px solid var(--color-input-invalid-border);
+  background-color: var(--color-input-invalid-background);
+}
+
+.Invalid::placeholder {
+  color: var(--color-input-text);
 }

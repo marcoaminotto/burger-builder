@@ -11,21 +11,21 @@
   padding: 5px;
   margin: 0 5px;
   width: 80px;
-  border: 1px solid #AA6817;
+  border: 1px solid var(--color-buildcontrol-button-border);
   cursor: pointer;
   outline: none;
 }
 
 .BuildControl button:disabled {
-  background-color: #AC9980;
-  border: 1px solid #7E7365;
-  color: #ccc;
+  background-color: var(--color-buildcontrol-button-disabled-background);
+  border: 1px solid var(--color-buildcontrol-button-disabled-border);
+  color: var(--color-buildcontrol-button-disabled-text);
   cursor: default;
 }
 
 .BuildControl button:hover:disabled {
-  background-color: #AC9980;
-  color: #ccc;
+  background-color: var(--color-buildcontrol-button-hoverdisabled-background);
+  color: var(--color-buildcontrol-button-disabled-text);
   cursor: not-allowed;
 }
 
@@ -36,21 +36,21 @@
 }
 
 .BuildControl .Less {  
-  background-color: #D39952;
-  color: white;
+  background-color: var(--color-buildcontrol-less-background);
+  color: var(--color-buildcontrol-less-text);
 }
 
 .BuildControl .More {
-  background-color: #8F5E1E;
-  color: white;
+  background-color: var(--color-buildcontrol-more-background);
+  color: var(--color-buildcontrol-more-text);
 }
 
 .BuildControl .Less:hover, .BuildControl .Less:active {  
-  background-color: #DAA972;
-  color: white;
+  background-color: var(--color-buildcontrol-less-active-background);
+  color: var(--color-buildcontrol-less-active-text);
 }
 
 .BuildControl .More:hover,.BuildControl .More:active {
-  background-color: #99703F;
-  color: white;
+  background-color: var(--color-buildcontrol-more-active-background);
+  color: var(--color-buildcontrol-more-active-text);
 }

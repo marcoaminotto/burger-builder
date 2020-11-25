@@ -1,5 +1,5 @@
 .Loader {
-  color: #cf8f2e;
+  color: var(--color-loader);
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;

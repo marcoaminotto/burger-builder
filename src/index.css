@@ -1,5 +1,91 @@
+:root {
+  --color-dark: #1e1d29;
+  --color-body: white;
+  --color-primary: #e27b36;
+  --color-navbar-dark: #703b09;
+  --color-navbar-button: #8f5c2c;
+  --color-buildcontrol: #cf8f2e;
+  --color-buildcontrol-button-darker: #8f5e1e;
+  --color-buildcontrol-button-lighter: #d39952;
+  --color-order-button-background: #dad735;
+  --color-order-button-text: #dad735;
+
+  --color-button-background: transparent;
+  --color-button-text-danger: #944317;
+  --color-button-text-success: #5c9210;
+  --color-button-text-disabled: #ccc;
+  --color-button-text: white;
+
+  --color-input-background: white;
+  --color-input-text: black;
+  --color-input-border: #ccc;
+  --color-input-invalid-border: red;
+  --color-input-invalid-background: #fd6a73;
+
+  --color-model-background: white;
+  --color-model-border: #ccc;
+
+  --color-loader: #cf8f2e;
+
+  --color-order-border: #eee;
+  --color-order-shadow: #ccc;
+
+  --color-toolbar-background: #703b09;
+
+  --color-sidedrawer-background: white;
+
+  --color-drawertoggle-background: white;
+
+  --color-navigationitem-text: #8f5c2c;
+  --color-navigationitem-text-hover: #40a4c8;
+
+  --color-logo: white;
+
+  --color-burger-bread-primary: #f08e4a;
+  --color-burger-bread-secondary: #e27b36;
+  --color-burger-bread-shadow: #c15711;
+  --color-burger-seeds-primary: white;
+  --color-burger-seeds-shadow: #c9c9c9;
+  --color-burger-meat-primary: #7f3608;
+  --color-burger-meat-secondary: #702e05;
+  --color-burger-cheese-primary: #f4d004;
+  --color-burger-cheese-secondary: #d6bb22;
+  --color-burger-salad-primary: #228c1d;
+  --color-burger-salad-secondary: #91ce50;
+  --color-burger-bacon-primary: #bf3813;
+  --color-burger-bacon-secondary: #c45e38;
+
+  --color-buildcontrol-background: #cf8f2e;
+  --color-buildcontrol-shadow: #ccc;
+  --color-buildcontrol-button-border: #aa6817;
+  --color-buildcontrol-button-disabled-background: #ac9980;
+  --color-buildcontrol-button-disabled-border: #7e7365;
+  --color-buildcontrol-button-disabled-text: #ccc;
+  --color-buildcontrol-button-hoverdisabled-background: #ac9980;
+  --color-buildcontrol-less-background: #d39952;
+  --color-buildcontrol-less-text: white;
+  --color-buildcontrol-less-active-background: #daa972;
+  --color-buildcontrol-less-active-text: white;
+  --color-buildcontrol-more-background: #8f5e1e;
+  --color-buildcontrol-more-text: white;
+  --color-buildcontrol-more-active-background: #99703f;
+  --color-buildcontrol-more-active-text: white;
+
+  --color-order-button-background: #dad735;
+  --color-order-button-border: #966909;
+  --color-order-button-text: #966909;
+  --color-order-button-shadow: #966909;
+  --color-order-button-background-hover: #a0db41;
+  --color-order-button-border-hover: #966909;
+  --color-order-button-text-hover: #966909;
+  --color-order-button-background-disabled: #c7c6c6;
+  --color-order-button-border-disabled: #ccc;
+  --color-order-button-text-disabled: #888888;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  background-color: var(--color-body);
 }
