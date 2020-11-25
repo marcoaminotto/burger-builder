@@ -1,7 +1,7 @@
 .Button {
-  background-color: transparent;
+  background-color: var(--color-button-background);
   border: none;
-  color: white;
+  color: var(--color-button-text);
   outline: none;
   cursor: pointer;
   font: inherit;
@@ -16,14 +16,14 @@
 }
 
 .Button:disabled {
-  color: #ccc;
+  color: var(--color-button-text-disabled);
   cursor: not-allowed;
 }
 
 .Success {
-  color: #5c9210;
+  color: var(--color-button-text-success);
 }
 
 .Danger {
-  color: #944317;
+  color: var(--color-button-text-danger);
 }
